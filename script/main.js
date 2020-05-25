@@ -1,3 +1,5 @@
+'use strict';
+
 const leftMenu = document.querySelector('.left-menu');
 const hamburger = document.querySelector('.hamburger');
 
@@ -36,19 +38,22 @@ tvcardImg.forEach(function (elem) {
     elem.addEventListener('mouseover', (event) => {
         console.log('mouseenter');
         const target = event.target;
-        const src = target.getAttribute('src');
+        // const src = target.getAttribute('src');
+        // const src = target.src;
+        // console.log(src);
+        target.dataset.srcOrigin = target.src;
 
-        console.log(src);
-        target.dataset.srcOrigin = `${src}`;
+        // const data = target.dataset.backdrop;
+        // target.setAttribute('src', `${data}`);
+        target.src = target.dataset.backdrop;
 
-        const data = target.dataset.backdrop;
-        target.setAttribute('src', `${data}`);
     });
 
     elem.addEventListener('mouseout', (event) => {
         console.log('mouseout');
-        const src = event.target.dataset.srcOrigin;
-        event.target.setAttribute('src', `${src}`);
+        const target = event.target;
+        // const src = target.dataset.srcOrigin;
+        target.src = target.dataset.srcOrigin;
     });
 });
 
